@@ -6,49 +6,17 @@
     "error": string | null
 }
 ```
-### ever_getAccounts
-Returns a list of all wallet addresses available for all methods of this JSON-RPC. 
-
-
-##### Parameters:
-not
-
-##### Returns:
-1. accounts: list[Account]
-
-    Account - dictionary:
-   1. address - owner's wallet address
-##### Example:
-```
-// Request
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "ever_getAccounts",
-  "params": {}
-}
- 
-// Result
-{
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result":  {
-        "data": [
-             { "address": "0:b38d96bceaa156c07f22b5596c2374b87e26cc53b1b6d7df43401d671bdea708" },
-             { "address": "0:695e425fc721b988f86268062fbb1b812d792ee544f2abeb3b772cc1e579db8d" }
-        ],
-        "error": null
-    }
-}
-```
 ### ever_processMessage
-Creates message, sends it to the network and monitors its processing.
+Generation of the message body and its signature.
 ##### Parameters:
-1. address - string, wallet address received from "ever_getAccounts"
-2. method - string, method of smartcontract
-3. method_params -  dictionary, method params of smartcontract
+1. source_address - message source address;
+2. value - amount of coins attached to the message;
+3. bounce - should the answer message be generated in case of an error;
+4. dest_address - message destination address;
+5. dest_payload - message destination payload;
+6. dest_abi - destination contract ABI;
 ##### Returns:
-1. out_msgs  - list[string], list of output messages ids
+1. signed_ext_message - signed external message;
 ##### Example:
 ```
 // Example for MultisigWallet
@@ -58,15 +26,12 @@ Creates message, sends it to the network and monitors its processing.
   "jsonrpc": "2.0",
   "method": "ever_processMessage",
   "params": {
-        "address": "0:695e425fc721b988f86268062fbb1b812d792ee544f2abeb3b772cc1e579db8d"
-        "method": "sendTransaction",
-        "method_params": {
-            "dest": "0:b38d96bceaa156c07f22b5596c2374b87e26cc53b1b6d7df43401d671bdea708",
-            "value": 1000000000,
-            "bounce": False,
-            "flags": 0,
-            "payload": ""
-        },
+        "source_address": "0:695e42...b8d",
+        "value": 1000000000,
+        "bounce": False,
+        "dest_address": "0:b38d96...708",
+        "dest_payload": "",
+        "dest_abi": ""
     }
 }
  
@@ -76,7 +41,7 @@ Creates message, sends it to the network and monitors its processing.
   "jsonrpc": "2.0",
   "result":  {
         "data": {
-            "out_msgs": ["c0b0996a9f0ea8e472041857ff2da9cf8086a78603f823a7170891f43a217ff1"]
+            "signed_ext_message": "c0b0996a9f0ea8e472041857ff2da9cf8086a78603f823a7170891f43a217ff1"
         },
         "error": null
     }
