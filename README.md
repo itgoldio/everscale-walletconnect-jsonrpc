@@ -48,7 +48,7 @@ Creates message, sends it to the network, monitors its processing and returns tr
 5. dest_payload - message destination payload;
 6. dest_abi - destination contract ABI;
 ##### Returns:
-1. signed_ext_message - signed external message;
+1. tx_id - transaction's id in blockchain;
 ##### Example:
 ```
 // Example for MultisigWallet
@@ -72,7 +72,7 @@ Creates message, sends it to the network, monitors its processing and returns tr
   "id": 1,
   "jsonrpc": "2.0",
   "result":  {
-        "tx_id": "c0b0996a9f0ea8e472041857ff2da9cf8086a78603f823a7170891f43a217ff1"
+        "tx_id": "743e1c0046b82a48a2cf8cbe9a2059ce6f3862cfae377c77d9f1b4efd88d7acb"
     }
 }
 ```
