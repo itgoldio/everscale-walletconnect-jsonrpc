@@ -13,7 +13,6 @@ Creates message, sends it to the network, monitors its processing and returns tr
 1. tx_id - transaction's id in blockchain;
 ##### Example:
 ```
-// Example for MultisigWallet
 // Request
 {
   "id": 1,
@@ -52,7 +51,6 @@ Message that can then be sent to the blockchain.
 1. signed_ext_message - signed external message;
 ##### Example:
 ```
-// Example for MultisigWallet
 // Request
 {
   "id": 1,
@@ -82,13 +80,12 @@ Message that can then be sent to the blockchain.
 Signature of a random message for authentication.
 ##### Parameters:
 1. source_address - message source address;
-2. message - message in base64;
+2. message - some message in base64;
 ##### Returns:
 1. signature - string signature in base64;
 2. pubkey - public key of the wallet's address;
 ##### Example:
 ```
-// Example for MultisigWallet
 // Request
 {
   "id": 1,
